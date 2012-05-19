@@ -1,10 +1,10 @@
 php_mongo_101
 =============
 
-A simple php script that uses MongoDB
+A simple php script that performs CRUD against MongoDB
 
 Basic Features:
 * List Records
 * Add a Record
-* Edit a Record - need to remove double qoutes
-* Delete a Record - not yet started
+* Edit a Record
+* Delete a Record

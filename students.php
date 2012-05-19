@@ -1,7 +1,11 @@
 <?php
 require_once("connection.php");
-
-$cursor = $collection->find();	# 4. Extract all Documents in a Collection
+if(strcmp('delete', @$_GET['act']) === 0){
+	# after deleting user redirect to page to disable refresh
+	$collection->remove(array("_id" => new MongoId($_GET['id'])));
+	header("Location: students.php");
+}
+$students = $collection->find(); # similar to SELECT * FROM students
 ?>
 <table>
 <tr>
@@ -9,15 +13,19 @@ $cursor = $collection->find();	# 4. Extract all Documents in a Collection
 <td>Middle Name</td>
 <td>Last Name</td>
 <td>Email</td>
+<td colspan='2'>&nbsp;</td>
 </tr>
-<? foreach($cursor as $obj): ?>
+<? foreach($students as $student): ?>
 	<tr>
-	<td><?=$obj["first_name"]?></td>
-	<td><?=$obj["middle_name"]?></td>
-	<td><?=$obj["last_name"]?></td>
-	<td><?=$obj["email"]?></td>
+	<td><?=$student["first_name"]?></td>
+	<td><?=$student["middle_name"]?></td>
+	<td><?=$student["last_name"]?></td>
+	<td><?=$student["email"]?></td>
 	<td>
-		<a href="student.php?id=<?=$obj["_id"]?>">edit</a>
+		<a href="student.php?id=<?=$student["_id"]?>">edit</a>
+	</td>
+	<td>
+		<a href="students.php?act=delete&id=<?=$student["_id"]?>">delete</a>
 	</td>
 	</tr>
 <? endforeach;?>
