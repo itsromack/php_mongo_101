@@ -1,7 +1,6 @@
 <?php
-$m = new Mongo();		# 1. Create a Mongo Object
-$db = $m->lvcc;			# 2. Select Database
-$collection = $db->students;	# 3. Select a Colletion
+require_once("connection.php");
+
 $cursor = $collection->find();	# 4. Extract all Documents in a Collection
 ?>
 <table>
