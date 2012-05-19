@@ -1,7 +1,7 @@
 php_mongo_101
 =============
 
-A simple php script that performs CRUD against MongoDB
+A simple php scripts that perform CRUD against MongoDB
 
 Basic Features:
 * List Records
