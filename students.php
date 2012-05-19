@@ -1,31 +1,24 @@
 <?php
-$m = new Mongo();
-
-$db = $m->lvcc;
-
-$collection = $db->students;
-
-$cursor = $collection->find();
-
-echo "<table>\n";
-echo "<tr>";
-echo "<td>First Name</td>";
-echo "<td>Middle Name</td>";
-echo "<td>Last Name</td>";
-echo "<td>Email</td>";
-echo "</tr>";
-foreach($cursor as $obj)
-{
-	echo "<tr>";
-	echo "<td>" . $obj["first_name"] . "</td>";
-	echo "<td>" . $obj["middle_name"] . "</td>";
-	echo "<td>" . $obj["last_name"] . "</td>";
-	echo "<td>" . $obj["email"] . "</td>";
-	echo "</tr>";
-}
-echo "</tr>";
-echo "</table>";
-
-echo "<br />";
-
-echo "<a href='student.php'>Add New Student</a>";
+$m = new Mongo();		# 1. Create a Mongo Object
+$db = $m->lvcc;			# 2. Select Database
+$collection = $db->students;	# 3. Select a Colletion
+$cursor = $collection->find();	# 4. Extract all Documents in a Collection
+?>
+<table>
+<tr>
+<td>First Name</td>
+<td>Middle Name</td>
+<td>Last Name</td>
+<td>Email</td>
+</tr>
+<? foreach($cursor as $obj): ?>
+	<tr>
+	<td><?=$obj["first_name"]?></td>
+	<td><?=$obj["middle_name"]?></td>
+	<td><?=$obj["last_name"]?></td>
+	<td><?=$obj["email"]?></td>
+	</tr>
+<? endforeach;?>
+</table>
+<br />
+<a href='student.php'>Add New Student</a>
