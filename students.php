@@ -17,6 +17,9 @@ $cursor = $collection->find();	# 4. Extract all Documents in a Collection
 	<td><?=$obj["middle_name"]?></td>
 	<td><?=$obj["last_name"]?></td>
 	<td><?=$obj["email"]?></td>
+	<td>
+		<a href="student.php?id=<?=$obj["_id"]?>">edit</a>
+	</td>
 	</tr>
 <? endforeach;?>
 </table>
