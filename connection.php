@@ -1,7 +1,7 @@
 <?php
-$database_name   = 'lvcc';
+$database_name = 'lvcc';
 $collection_name = 'students';
 
-$m          = new Mongo();
+$m = new Mongo();
 $collection = $m->selectDB($database_name)->selectCollection($collection_name);
 ?>
